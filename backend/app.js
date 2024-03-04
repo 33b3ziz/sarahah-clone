@@ -1,10 +1,12 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const app = express()
-const port = 3000
-app.use(express.json())
-app.use('/users',require('./APIs/user.api'))
-app.use('/messages',require('./APIs/message.api'))
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-mongoose.connect('mongodb://localhost:27017/sara7a')
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const app = express();
+const port = 3000;
+app.use(express.json());
+app.use(cors());
+app.use("/users", require("./APIs/user.api"));
+app.use("/messages", require("./APIs/message.api"));
+app.get("/", (req, res) => res.send("Hello World!"));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+mongoose.connect("mongodb://localhost:27017/sara7a");

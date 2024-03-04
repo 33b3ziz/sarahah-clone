@@ -3,6 +3,8 @@ import MainPage from "./pages/MainPage";
 import SignUp from "./pages/SignUp";
 import Layout from "./pages/Layout";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
+import Signin from "./pages/Signin";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
           }
         >
           <Route path="home" element={<MainPage />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="sign-up" element={<SignUp />} />
+          <Route path="sign-in" element={<Signin />} />
         </Route>
       </Routes>
     </BrowserRouter>
