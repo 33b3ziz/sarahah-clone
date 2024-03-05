@@ -22,7 +22,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values: FormData) => {
-    console.log(values);
+    // console.log(values);
     const res = await fetch("http://localhost:3000/users/signUp", {
       method: "POST",
       headers: {
@@ -59,7 +59,13 @@ const SignUp = () => {
           <label htmlFor="name">Name</label>
           <input
             type="text"
-            {...register("name", { required: "Name is required" })}
+            {...register("name", {
+              required: "Name is required",
+              minLength: {
+                value: 3,
+                message: "Name must be at least 3 characters",
+              },
+            })}
             id="name"
             required
             placeholder="Your Name"
@@ -84,18 +90,20 @@ const SignUp = () => {
           <input
             type="password"
             id="password"
-            // {...register("password", {
-            //   required: "Password is required",
-            //   minLength: {
-            //     value: 8,
-            //     message: "Password must be at least 8 characters",
-            //   },
-            //   validate: (value) =>
-            //     value.match(
-            //       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-            //     ) ||
-            //     "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
-            // })}
+            {...register("password", {
+              required: true,
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters",
+              },
+              validate: (value) =>
+                Boolean(
+                  value.match(
+                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+                  )
+                ) ||
+                "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
+            })}
             placeholder="Your Password"
             className="rounded-md border-2 border-gray-300 p-2 focus:outline-none focus:border-blue-500"
           />
