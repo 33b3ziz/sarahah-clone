@@ -6,7 +6,7 @@ const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
   const token = localStorage.getItem("token");
   useEffect(() => {
     if (!token) {
-      navigate("/signin");
+      navigate("/sign-in");
     }
   }, [navigate, token]);
 
