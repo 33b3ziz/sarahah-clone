@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (!token) {
+      navigate("/sign-in");
+    }
+  }, [navigate, token]);
 
   const [messages, setMessages] = useState([]);
   console.log(token);
