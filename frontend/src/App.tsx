@@ -20,6 +20,7 @@ function App() {
               </ProtectedRoutes>
             }
           >
+            <Route index element={<Profile />} />
             <Route path="profile" element={<Profile />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="sign-in" element={<Signin />} />

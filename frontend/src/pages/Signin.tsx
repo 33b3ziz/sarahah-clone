@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -56,10 +56,19 @@ const Signin = () => {
         />
         <button
           type="submit"
-          className="bg-green-500 rounded-md h-8 mt-2 text-white"
+          className="bg-green-500 hover:bg-green-600 transition rounded-md h-8 mt-2 text-white"
         >
           Sign in
         </button>
+        <div className="flex gap-4 justify-end items-center">
+          <span>Create Account</span>
+          <Link
+            to="/sign-up"
+            className="bg-green-500 hover:bg-green-600 transition text-white rounded-md px-2 py-1"
+          >
+            sign up
+          </Link>
+        </div>
       </form>
     </section>
   );
